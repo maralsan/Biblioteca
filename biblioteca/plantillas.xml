@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+    
+        <!-- Definimos las acciones y las vistas-->
+        
+        <!-- Acción que muestra la lista de países-->
+        <act_window id="paises_list"
+            name="Países"
+            res_model="biblioteca.pais"
+            view_mode="form,tree"/>
+ 
+        <!--Estilo del formulario de países-->
+        <record model="ir.ui.view" id="vista_pais">
+            <field name="name">biblioteca.pais</field>
+            <field name="model">biblioteca.pais</field>
+            <field name="arch" type="xml">
+                <form string="Pais List">
+                    <sheet>
+                        <group>
+                            <field name="nombrePais"/>                          
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+		
+        <!-- Acción que muestra la lista de categorías-->
+        <act_window id="categorias_list"
+            name="Categorías"
+            res_model="biblioteca.categoria"
+            view_mode="form,tree"/>
+ 
+        <!--Estilo del formulario de categorías-->
+        <record model="ir.ui.view" id="vista_categoria">
+            <field name="name">Categorias</field>
+            <field name="model">biblioteca.categoria</field>
+            <field name="arch" type="xml">
+                <form string="Categoria List">
+                    <sheet>
+                        <group>
+                            <field name="categoria"/>                          
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        
+        <!-- Acción que muestra la lista de autores-->
+        <act_window id="autores_list"
+            name="Categorías"
+            res_model="biblioteca.autor"
+            view_mode="form,tree"/>
+ 
+        
+        <!--Estilo del formulario de autores-->
+        <record model="ir.ui.view" id="vista_autor">
+            <field name="name">Autores</field>
+            <field name="model">biblioteca.autor</field>
+            <field name="arch" type="xml">
+                <form string="Autor List">
+                    <sheet>
+                        <group>
+                            <field name="nombre"/>       
+                            <field name="paisN"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+             
+        <!-- Acción que muestra la lista de libros-->
+        <act_window id="libros_list"
+            name="Libros"
+            res_model="biblioteca.libro"
+            view_mode="form,tree"/>
+ 
+        <!--Estilo del formulario de libros-->
+        <record model="ir.ui.view" id="vista_libro">
+            <field name="name">Libros</field>
+            <field name="model">biblioteca.libro</field>
+            <field name="arch" type="xml">
+                <form string="Autor List">
+                    <sheet>
+                        <group>
+                            <field name="titulo"/>       
+                            <field name="autorN"/>  
+                            <field name="categoria"/>
+                            <field name="fecha"/>                              
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+    
+        <!--Menú superior. Mostratá el título en la barra superior.-->
+        <menuitem id="main_biblioteca_menu" name="Biblioteca"/>
+
+            <!-- Menú principal que contiene el formulario de los países.-->
+            <menuitem id="biblioteca_menu_pais" name="Países" parent="main_biblioteca_menu"/>
+                <!--Submenú que muestra el formulario de los países.-->
+                <menuitem id="courses_menu" name="Países" parent="biblioteca_menu_pais" action="paises_list"/>
+		
+            <!-- Menú principal que contiene el formulario de las categorías.-->
+            <menuitem id="biblioteca_menu_cat" name="Categorías" parent="main_biblioteca_menu"/>
+            
+                <!--Submenú que muestra el formulario de categorías.-->
+                <menuitem id="courses_menu2" name="Categorías" parent="biblioteca_menu_cat" action="categorias_list"/>
+		
+            <menuitem id="biblioteca_menu_autor" name="Autores" parent="main_biblioteca_menu"/>
+                <menuitem id="courses_menu3" name="Autores" parent="biblioteca_menu_autor" action="autores_list"/>
+
+            <menuitem id="biblioteca_menu_libro" name="Libros" parent="main_biblioteca_menu"/>
+                <menuitem id="courses_menu4" name="Libros" parent="biblioteca_menu_libro" action="libros_list"/>
+            
+    
+ 
+    </data>
+</openerp>
